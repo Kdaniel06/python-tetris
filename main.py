@@ -6,10 +6,11 @@ class App:
     def __init__(self):
         pg.init()
         pg.display.set_caption('Tetris')
-        self.screen = pg.display.set_mode(FIELD_RESOLUTION) # Window Creation
+        self.screen = pg.display.set_mode(WIN_RES) # Window Creation
         self.clock = pg.time.Clock()
         self.set_timer()
         self.tetris = Tetris(self)
+        self.text = Text(self)
     
     def set_timer(self):
         self.user_event = pg.USEREVENT + 0
@@ -22,8 +23,10 @@ class App:
         self.clock.tick(FPS)
         
     def draw(self):
-        self.screen.fill(color=FIELD_COLOR)
+        self.screen.fill(color=BG_COLOR)
+        self.screen.fill(color=FIELD_COLOR, rect=(0, 0, *FIELD_RESOLUTION))
         self.tetris.draw()
+        self.text.draw()
         pg.display.flip()
         
     def check_events(self):
