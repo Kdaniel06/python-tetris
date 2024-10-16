@@ -44,7 +44,6 @@ class Tetris:
         self.full_lines = 0
         
         
-    ## ! Check the error for the deletion of the full rows
     def check_full_lines(self):
         row = FIELD_HEIGHT - 1
         for y in range(FIELD_HEIGHT - 1, -1, -1):
@@ -89,8 +88,8 @@ class Tetris:
     def control(self, pressed_key):
         if pressed_key == pg.K_LEFT:
             self.tetromino.move(direction='left')
-        if pressed_key == pg.K_DOWN:
-            self.tetromino.move(direction='down')
+        # if pressed_key == pg.K_DOWN:
+        #     self.tetromino.move(direction='down')
         if pressed_key == pg.K_RIGHT:
             self.tetromino.move(direction='right')
         if pressed_key == pg.K_UP:

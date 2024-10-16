@@ -17,7 +17,7 @@ class Block(pg.sprite.Sprite):
         
         
     def is_alive(self):
-        if not self.is_alive:
+        if not self.alive:
             self.kill()
         
     def rotate(self, pivot_position):
@@ -47,7 +47,7 @@ class Tetromino:
     def __init__(self, tetris, current=True):
         self.tetris = tetris
         self.shape = random.choice(list(TETROMINOES.keys()))
-        self.blocks = [Block(self, pos) for pos in TETROMINOES[self.shape]]
+        self.blocks = [Block(self, position) for position in TETROMINOES[self.shape]]
         self.landing  = False
         self.current = current
         
